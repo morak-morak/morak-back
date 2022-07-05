@@ -36,7 +36,6 @@ public class PollItem extends BaseEntity {
     private String subject;
 
     @OneToMany(mappedBy = "pollItem", cascade = CascadeType.ALL, orphanRemoval = true)
-    // @OneToMany(mappedBy = "pollItem")
     private List<PollResult> pollResults = new ArrayList<>();
 
     public PollItem(Long id, Poll poll, String subject) {
@@ -51,6 +50,6 @@ public class PollItem extends BaseEntity {
     }
 
     public void deleteIfPollMember(Member member) {
-        pollResults.removeIf(pollResult -> pollResult.getMember().equals(member));
+        pollResults.removeIf(pollResult -> pollResult.getMember().getId().equals(member.getId()));
     }
 }
