@@ -51,4 +51,11 @@ public class PollService {
             .map(poll -> PollResponse.from(poll, member))
             .collect(Collectors.toList());
     }
+
+    public void doPoll(Long tempMemberId, Long pollId, List<Long> itemIds) {
+        Member member = memberRepository.getById(tempMemberId);
+        Poll poll = pollRepository.getById(pollId);
+        List<PollItem> items = pollItemRepository.findAllById(itemIds);
+        poll.doPoll(items, member);
+    }
 }

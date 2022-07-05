@@ -1,6 +1,7 @@
 package com.morak.back.poll.ui.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,12 +51,12 @@ public class PollCreateRequest {
 
     public Poll toPoll(Member member, Team team, PollStatus status, String code) {
 
-        return new Poll(null, team, member, title, allowedPollCount, isAnonymous, status, closedAt, code);
+        return new Poll(null, team, member, title, allowedPollCount, isAnonymous, status, closedAt, code, new ArrayList<>());
     }
 
     public List<PollItem> toPollItems(Poll poll) {
         return subjects.stream()
-            .map(subject -> new PollItem(null, poll, subject))
+            .map(subject -> new PollItem(null, poll, subject, new ArrayList<>()))
             .collect(Collectors.toList());
     }
 }

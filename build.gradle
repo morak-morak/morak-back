@@ -34,6 +34,9 @@ dependencies {
     // 테스트
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.rest-assured:rest-assured:4.4.0'
+
+    // 유틸
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
 }
 
 test {
